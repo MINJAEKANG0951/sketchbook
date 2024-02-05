@@ -8,10 +8,6 @@ import androidx.fragment.app.Fragment;
 public abstract class BlueprintFragment extends Fragment
 {
     protected FragmentCommunicationInterface communicationCallback;
-    public interface FragmentCommunicationInterface {
-        void onFragmentInteraction(String data);
-    }
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -23,5 +19,9 @@ public abstract class BlueprintFragment extends Fragment
         {
             throw new ClassCastException(context.toString() + " must implement FragmentCommunicationInterface");
         }
+    }
+
+    public interface FragmentCommunicationInterface {
+        void onFragmentInteraction(String data);
     }
 }
