@@ -1,0 +1,5 @@
+
+
+fragment -> activity :
+when it comes to a modern way to exchange data between fragment and activity,
+Using ViewModel and LiveData is recommended.

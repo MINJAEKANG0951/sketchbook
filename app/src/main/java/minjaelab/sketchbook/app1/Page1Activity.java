@@ -2,6 +2,7 @@ package minjaelab.sketchbook.app1;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -10,18 +11,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import minjaelab.sketchbook.R;
+import minjaelab.sketchbook.app1.fragment.BlueprintFragment;
 import minjaelab.sketchbook.app1.fragment.FragmentA;
 import minjaelab.sketchbook.app1.fragment.FragmentB;
 import minjaelab.sketchbook.app1.fragment.FragmentC;
 import minjaelab.sketchbook.app1.fragment.FragmentHome;
 
-public class Page1Activity extends AppCompatActivity
+public class Page1Activity extends AppCompatActivity implements BlueprintFragment.FragmentCommunicationInterface
 {
     private Context context;
 
     private TextView sayData;
     private TextView homeBtn;
-    private TextView currentFragment;
+    private TextView dataBag;
 
     private TextView btnA;
     private TextView btnB;
@@ -44,7 +46,7 @@ public class Page1Activity extends AppCompatActivity
 
         sayData         =   findViewById(R.id.sayData);
         homeBtn         =   findViewById(R.id.homeBtn);
-        currentFragment =   findViewById(R.id.currentFragment);
+        dataBag         =   findViewById(R.id.dataBag);
         btnA            =   findViewById(R.id.btnA);
         btnB            =   findViewById(R.id.btnB);
         btnC            =   findViewById(R.id.btnC);
@@ -97,7 +99,9 @@ public class Page1Activity extends AppCompatActivity
                     if(!turnOffNow)
                     {
                         turnOffNow = true;
-                        Toast.makeText(context, "The app will close if the back button is clicked again.", Toast.LENGTH_SHORT).show();
+                        Toast shortToast = Toast.makeText(context, "The app will close if the back button is clicked again.", Toast.LENGTH_SHORT);
+                        shortToast.show();
+                        new Handler().postDelayed(shortToast::cancel, 1000);
                         return;
                     }
                     finish();
@@ -113,7 +117,6 @@ public class Page1Activity extends AppCompatActivity
         // Add the callback to the OnBackPressedDispatcher
         getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
 
-
     }
 
 
@@ -123,4 +126,8 @@ public class Page1Activity extends AppCompatActivity
         onBackPressedCallback.remove();
     }
 
+    @Override
+    public void onFragmentInteraction(String data) {
+        dataBag.setText(data);
+    }
 }

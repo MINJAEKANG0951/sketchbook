@@ -37,7 +37,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"/>
         <TextView
-            android:id="@+id/currentFragment"
+            android:id="@+id/dataBag"
             android:text=""
             android:textStyle="bold"
             android:textColor="@color/white"
