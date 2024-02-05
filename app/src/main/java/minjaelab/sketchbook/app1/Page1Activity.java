@@ -1,10 +1,13 @@
 package minjaelab.sketchbook.app1;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import minjaelab.sketchbook.R;
 import minjaelab.sketchbook.app1.fragment.FragmentA;
@@ -14,6 +17,8 @@ import minjaelab.sketchbook.app1.fragment.FragmentHome;
 
 public class Page1Activity extends AppCompatActivity
 {
+    private Context context;
+
     private TextView sayData;
     private TextView homeBtn;
     private TextView currentFragment;
@@ -24,6 +29,10 @@ public class Page1Activity extends AppCompatActivity
 
     private String savedData;
 
+    private boolean turnOffNow;
+
+    private OnBackPressedCallback onBackPressedCallback;
+
 
     // SketchBook - place for tests, Android - Java
     @Override
@@ -31,6 +40,7 @@ public class Page1Activity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_1);
+        context = this;
 
         sayData         =   findViewById(R.id.sayData);
         homeBtn         =   findViewById(R.id.homeBtn);
@@ -57,30 +67,60 @@ public class Page1Activity extends AppCompatActivity
         homeBtn.setOnClickListener(view -> {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.section, new FragmentHome())
-                    .addToBackStack(null)
                     .commit();
         });
         btnA.setOnClickListener(view -> {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.section, new FragmentA())
-                    .addToBackStack(null)
                     .commit();
         });
         btnB.setOnClickListener(view -> {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.section, new FragmentB())
-                    .addToBackStack(null)
                     .commit();
         });
         btnC.setOnClickListener(view -> {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.section, new FragmentC())
-                    .addToBackStack(null)
                     .commit();
         });
 
 
 
+        onBackPressedCallback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.section);
+
+                if (fragment instanceof FragmentHome) {
+
+                    if(!turnOffNow)
+                    {
+                        turnOffNow = true;
+                        Toast.makeText(context, "The app will close if the back button is clicked again.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    finish();
+
+                } else {
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.section, new FragmentHome())
+                            .commit();
+                    turnOffNow = false;
+                }
+            }
+        };
+        // Add the callback to the OnBackPressedDispatcher
+        getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
+
 
     }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        onBackPressedCallback.remove();
+    }
+
 }
