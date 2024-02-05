@@ -1,106 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal" >
 
-
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/app1"
+        android:text="app1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#2196F3"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="10dp"
-        >
-        <TextView
-            android:id="@+id/sayData"
-            android:text="data saved"
-            android:gravity="center"
-            android:textSize="12dp"
-            android:textStyle="bold"
-            android:layout_width="45dp"
-            android:height="45dp"
-            android:background="#8BC34A"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/homeBtn"
-            android:text="sketchbook"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:paddingVertical="20dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/currentFragment"
-            android:text=""
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textAlignment="center"
-            android:layout_width="45dp"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-
-
-
-    <FrameLayout
-        android:id="@+id/section"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#0D979797"
+        android:layout_marginVertical="10dp"
         />
 
 
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/btnA"
-            android:text="content A"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:background="#4CAF50"
-            android:paddingVertical="20dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            />
-        <TextView
-            android:id="@+id/btnB"
-            android:text="content B"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:background="#00BCD4"
-            android:paddingVertical="20dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/btnC"
-            android:text="content C"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:background="#FF9800"
-            android:paddingVertical="20dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"/>
-
-
-    </LinearLayout>
 
 </LinearLayout>

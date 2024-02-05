@@ -1,4 +1,4 @@
-package minjaelab.sketchbook.fragment;
+package minjaelab.sketchbook.app1.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
