@@ -8,12 +8,15 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 
 import minjaelab.sketchbook.R;
 import minjaelab.sketchbook.app1.fragment.callbackinterface.BlueprintFragmentForCallBackInterface;
+import minjaelab.sketchbook.app1.fragment.viewmodel_and_livedata.StorageViewModel;
 
 public class FragmentB extends BlueprintFragmentForCallBackInterface
 {
+    private StorageViewModel storageViewModel;
     private Button callBackInterfaceSend;
     private Button viewModelSend;
     @Override
@@ -24,7 +27,7 @@ public class FragmentB extends BlueprintFragmentForCallBackInterface
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        storageViewModel = new ViewModelProvider(requireActivity()).get(StorageViewModel.class);
         connectViews(view);
         addListenersToTheViews();
     }
@@ -39,7 +42,7 @@ public class FragmentB extends BlueprintFragmentForCallBackInterface
             communicationCallback.onFragmentInteraction("B");
         });
         viewModelSend.setOnClickListener(view -> {
-
+            storageViewModel.setData("B");
         });
     }
 }

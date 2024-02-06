@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import minjaelab.sketchbook.R;
 import minjaelab.sketchbook.app1.fragment.FragmentA;
@@ -16,9 +17,12 @@ import minjaelab.sketchbook.app1.fragment.FragmentB;
 import minjaelab.sketchbook.app1.fragment.FragmentC;
 import minjaelab.sketchbook.app1.fragment.FragmentHome;
 import minjaelab.sketchbook.app1.fragment.callbackinterface.FragmentCommunicationInterface;
+import minjaelab.sketchbook.app1.fragment.viewmodel_and_livedata.StorageViewModel;
 
 public class Page1Activity extends AppCompatActivity implements FragmentCommunicationInterface {
     private Context context;
+
+    private StorageViewModel storageViewModel;
 
     private TextView sayData;
     private TextView homeBtn;
@@ -40,6 +44,7 @@ public class Page1Activity extends AppCompatActivity implements FragmentCommunic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_1);
+        storageViewModel = new ViewModelProvider(this).get(StorageViewModel.class);
         context = this;
 
         sayData = findViewById(R.id.sayData);
@@ -112,6 +117,11 @@ public class Page1Activity extends AppCompatActivity implements FragmentCommunic
         };
         // Add the callback to the OnBackPressedDispatcher
         getOnBackPressedDispatcher().addCallback(this, onBackPressedCallback);
+
+
+        storageViewModel.getData().observe(this, newData -> {
+            dataBag.setText(newData);
+        });
 
     }
 
