@@ -8,11 +8,11 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import minjaelab.sketchbook.R;
+import minjaelab.sketchbook.app1.fragment.callbackinterface.BlueprintFragmentForCallBackInterface;
 
-public class FragmentC extends BlueprintFragment
+public class FragmentC extends BlueprintFragmentForCallBackInterface
 {
     private Button callBackInterfaceSend;
     private Button viewModelSend;

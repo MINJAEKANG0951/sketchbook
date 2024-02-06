@@ -1,13 +1,14 @@
-package minjaelab.sketchbook.app1.fragment;
+package minjaelab.sketchbook.app1.fragment.callbackinterface;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-public abstract class BlueprintFragment extends Fragment
+public abstract class BlueprintFragmentForCallBackInterface extends Fragment
 {
     protected FragmentCommunicationInterface communicationCallback;
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -21,7 +22,5 @@ public abstract class BlueprintFragment extends Fragment
         }
     }
 
-    public interface FragmentCommunicationInterface {
-        void onFragmentInteraction(String data);
-    }
+
 }

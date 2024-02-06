@@ -5,17 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.fragment.app.Fragment;
 
 import minjaelab.sketchbook.R;
+import minjaelab.sketchbook.app1.fragment.callbackinterface.BlueprintFragmentForCallBackInterface;
 
-public class FragmentA extends BlueprintFragment
+public class FragmentA extends BlueprintFragmentForCallBackInterface
 {
     private Button callBackInterfaceSend;
     private Button viewModelSend;

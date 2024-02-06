@@ -2,4 +2,30 @@
 
 fragment -> activity :
 when it comes to a modern way to exchange data between fragment and activity,
-Using ViewModel and LiveData is recommended.
+Using "ViewModel and LiveData" is recommended.
+also, "Callback interface" is used.
+
+
+
+Ways to exchange data in [ fragment -> activity ]
+1. Callback Interface
+2. ViewModel and LiveData
+
+    1. Callback Interface
+        1) You create an interface that a host-activity is going to implement.
+        2) In the interface, you create a empty method that is going to be overriden and defined in the activity(because the activity is going to implement the interface)
+        3) you create a blueprint fragment(which is abstract class and extends fragment class) for the fragments that are going to be used as a section in the host-activity.
+        4) And in the blueprint fragment, you define an instance of the interface(the host-activity is going to implement) as a field.
+        5) you initialize the instance(field) in override method 'onAttach' because you can reach to host-activity's address data in the method.
+            you put the fragment's host-activity address data to the instance. it is only possible when the host-activity implements the interface we made in phase 1).
+            by doing so, you hold address(reference) data to the host-activity in the field instance so that you can use the field later
+        6) now  you have an activity that implements an interface, so that defines the method
+            and the fragment inside the activity that holds that address data in the field to control the activity.
+        7) When sth happens, you can execute the call the instance and the method inside, and because the instance holds the address to the activity,
+           you can make the activity execute the method.
+
+        In summary, using callback interface in [fragment -> activity ] data exchange,
+        is that you put an address data to host-activity in the field of a fragment. so you can control the activity later.
+
+
+    2. ViewModel and LiveData
