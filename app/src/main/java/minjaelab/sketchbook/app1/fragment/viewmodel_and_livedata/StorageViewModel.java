@@ -17,5 +17,4 @@ public class StorageViewModel extends ViewModel
     public LiveData <Integer> getTime()      { return this.tiktok; }
     public LiveData <String> getData()       { return this.data; }
 
-
 }
