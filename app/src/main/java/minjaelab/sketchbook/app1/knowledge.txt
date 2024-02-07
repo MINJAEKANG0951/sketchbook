@@ -29,3 +29,8 @@ Ways to exchange data in [ fragment -> activity ]
 
 
     2. ViewModel and LiveData
+
+        - It's similar how react works. you create a class that has fields that works like states.
+        - you put a data change listener in an activity, so when the data defined in the class changes,
+          the listener listen to changes and execute code you wanna run or sth.
+        - no explanation is needed. you look it up, see how things are used in this project.
