@@ -1,6 +1,6 @@
-package minjaelab.sketchbook.api_communication;
+package minjaelab.sketchbook.apis;
 
-import minjaelab.sketchbook.api_communication.returnShapedModels.ShortURLResponse;
+import minjaelab.sketchbook.apis.models.ShortURLResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;

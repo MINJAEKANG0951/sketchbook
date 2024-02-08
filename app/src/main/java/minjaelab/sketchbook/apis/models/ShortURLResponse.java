@@ -1,4 +1,4 @@
-package minjaelab.sketchbook.api_communication.returnShapedModels;
+package minjaelab.sketchbook.apis.models;
 
 public class ShortURLResponse
 {
